@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\MyDayModel.cs" />
+    <Compile Include="Models\TaskAdderModel.cs" />
     <Compile Include="ViewModels\TaskAdderViewModel.cs" />
     <Compile Include="Views\TaskAdderView.xaml.cs">
       <DependentUpon>TaskAdderView.xaml</DependentUpon>

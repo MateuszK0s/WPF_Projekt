@@ -1,13 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace ToDoApp12329.ViewModels
 {
-    public class TaskAdderViewModel
+    using ToDoApp12329.Models;
+    public class TaskAdderViewModel : INotifyPropertyChanged
     {
-        
+        private string _test = "VM Test";
+        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+
+        public string Test
+        {
+            get
+            {
+                return _test;
+            }
+            set
+            {
+                if (_test == value)
+                    return;
+
+                _test = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(Test)));
+            }
+        }
     }
 }

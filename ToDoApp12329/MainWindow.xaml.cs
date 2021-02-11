@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ToDoApp12329.Models;
+using ToDoApp12329.ViewModels;
+
 
 namespace ToDoApp12329
 {
@@ -24,6 +19,7 @@ namespace ToDoApp12329
         {
             InitializeComponent();
             MyDateSet();
+            this.DataContext = new TaskAdderViewModel();
         }
 
         private string MyDateSet()

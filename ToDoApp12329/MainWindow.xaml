@@ -39,7 +39,7 @@
         </Grid.RowDefinitions>
 
         <Image x:Name="userIco" Grid.Row="1" Grid.Column="1" Source="pack://application:,,,/resources/icons/userIco.png" Margin="0,0,0,10"/>
-        <Label Content="Username" Grid.Row="1" Grid.Column="2"/>
+        <Label x:Name="usernameLabel" Content="{Binding Test}" Grid.Row="1" Grid.Column="2" />
         <Image x:Name="userico" Grid.Row="1" Grid.Column="3" Source="pack://application:,,,/resources/icons/userIco.png" Margin="0,0,0,10"/>
 
         <Border Height="1" Grid.Row="1" Background="Black" Opacity="0.1" Margin="0,39,0,0" Grid.ColumnSpan="3" Grid.Column="1"/>
