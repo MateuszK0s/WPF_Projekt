@@ -75,6 +75,5 @@
         <ListBox x:Name="MyDayTasks" Grid.Row="4" Grid.RowSpan="6" Grid.Column="5" Grid.ColumnSpan="5" Padding="5" BorderBrush="{x:Null}"/>
 
         <ContentControl Grid.Row="4" Grid.RowSpan="6" Grid.Column="5" Grid.ColumnSpan="5" />
-//a
     </Grid>
 </Window>
