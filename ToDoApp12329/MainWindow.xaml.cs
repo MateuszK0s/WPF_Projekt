@@ -19,7 +19,6 @@ namespace ToDoApp12329
         {
             InitializeComponent();
             MyDateSet();
-            this.DataContext = new TaskAdderViewModel();
         }
 
         private string MyDateSet()
@@ -32,12 +31,12 @@ namespace ToDoApp12329
 
         public void LoadTaskAdder()
         {
-
+             
         }
 
         private void TaskAdderButton_Click(object sender, RoutedEventArgs e)
         {
-            MyDayTasks.Items.Add("test");
+            DataContext = new TaskAdderViewModel();
         }
     }
 }

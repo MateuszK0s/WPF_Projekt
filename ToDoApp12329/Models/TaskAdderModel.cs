@@ -1,9 +1,10 @@
-﻿using System.Windows.Documents;
+﻿using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace ToDoApp12329.Models
 {
     class TaskAdderModel
     {
-        public List tasks { get; set; }    
+        public List<string> taskList = new List<string>();
     }
 }
