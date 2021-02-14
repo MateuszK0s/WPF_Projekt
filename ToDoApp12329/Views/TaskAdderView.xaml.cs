@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace ToDoApp12329.Views
 {
-    using ToDoApp12329.Models;
+    using ToDoApp12329.ViewModels;
     /// <summary>
     /// Interaction logic for TaskAdderView.xaml
     /// </summary>
@@ -24,7 +16,15 @@ namespace ToDoApp12329.Views
         public TaskAdderView()
         {
             InitializeComponent();
-            
+            DataContext = new DataObject();
+        }
+
+        class DataObject
+        {
+            public DataObject()
+            {
+                List<string> taskList = new List<string>();
+            }
         }
 
         private void saveTaskButton_Click(object sender, RoutedEventArgs e)

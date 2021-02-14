@@ -7,22 +7,9 @@
              mc:Ignorable="d"              
              d:DesignHeight="291" d:DesignWidth="541">
     <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -30,9 +17,41 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Task name:" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
-        <TextBox x:Name="taskName" Text="Name..."  Grid.Row="2" Grid.Column="1" Width="501"/>
-        <Button x:Name="saveTaskButton" Grid.Row="8" Grid.Column="1" Content="Add a task" Width="90" Height="35" Background="#FF171717" Foreground="White" Opacity="0.75" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="saveTaskButton_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <ItemsControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="216">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding name}"/>
+                        <CheckBox IsChecked="{Binding isChecked}" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Name" Width="411"/>
+        <TextBox x:Name="taskTextBox" Grid.Row="3" Grid.Column="1" Width="400" HorizontalAlignment="Left"/>
+        <Button x:Name="saveTaskButton" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Content="Add a task" 
+                Width="90" Height="35" Background="#FF171717" Foreground="White" Opacity="0.75" 
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="saveTaskButton_Click"/>
         
     </Grid>
 </UserControl>

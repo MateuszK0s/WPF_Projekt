@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:ToDoApp12329"
         xmlns:viewmodels="clr-namespace:ToDoApp12329.ViewModels"
         xmlns:views="clr-namespace:ToDoApp12329.Views"
-        xmlns:models="clr-namespace:ToDoApp12329.Models"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
@@ -44,40 +43,75 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="userIco" Grid.Row="1" Grid.Column="1" Source="pack://application:,,,/resources/icons/userIco.png" Margin="0,0,0,10"/>
+        <Image x:Name="userIco" Grid.Row="1" Grid.Column="1" 
+               Source="pack://application:,,,/resources/icons/userIco.png" Margin="0,0,0,10"/>
         <Label x:Name="usernameLabel" Content="Mateusz Kos" Grid.Row="1" Grid.Column="2" />
-        <Image x:Name="userico" Grid.Row="1" Grid.Column="3" Source="pack://application:,,,/resources/icons/userIco.png" Margin="0,0,0,10"/>
+        <Image x:Name="userico" Grid.Row="1" Grid.Column="3" 
+               Source="pack://application:,,,/resources/icons/userIco.png" Margin="0,0,0,10"/>
 
-        <Border Height="1" Grid.Row="1" Background="Black" Opacity="0.1" Margin="0,39,0,0" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <Border Height="1" Grid.Row="1" Background="Black" Opacity="0.1" Margin="0,39,0,0" 
+                Grid.ColumnSpan="3" Grid.Column="1"/>
 
-        <Image x:Name="Ico2" Grid.Row="2" Grid.Column="1" Source="pack://application:,,,/resources/icons/userIco.png"/>
+        <Image x:Name="Ico2" Grid.Row="2" Grid.Column="1" 
+               Source="pack://application:,,,/resources/icons/userIco.png"/>
         <Label Content="My Day" Grid.Row="2" Grid.Column="2"/>
         <Label Content="1" Grid.Row="2" Grid.Column="3" Opacity="0.6"/>
 
-        <Image x:Name="Ico3" Grid.Row="3" Grid.Column="1" Source="pack://application:,,,/resources/icons/userIco.png"/>
+        <Image x:Name="Ico3" Grid.Row="3" Grid.Column="1" 
+               Source="pack://application:,,,/resources/icons/userIco.png"/>
         <Label Content="Important" Grid.Row="3" Grid.Column="2"/>
         <Label Content="2" Grid.Row="3" Grid.Column="3" Opacity="0.6"/>
 
-        <Image x:Name="Ico4" Grid.Row="4" Grid.Column="1" Source="pack://application:,,,/resources/icons/userIco.png"/>
+        <Image x:Name="Ico4" Grid.Row="4" Grid.Column="1" 
+               Source="pack://application:,,,/resources/icons/userIco.png"/>
         <Label Content="Calendar" Grid.Row="4" Grid.Column="2"/>
         <Label Content="" Grid.Row="4" Grid.Column="3" Opacity="0.6"/>
 
-        <Border Grid.Column="4" Grid.RowSpan="11" Background="Black" Width="1" Opacity="0.1" Margin="10,0,0,0"/>
-        <Border Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Background="Black" Height="1" Opacity="0.1" Margin="0,10"/>
+        <Border Grid.Column="4" Grid.RowSpan="11" Background="Black" Width="1" Opacity="0.1" 
+                Margin="10,0,0,0"/>
+        <Border Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Background="Black" Height="1" 
+                Opacity="0.1" Margin="0,10"/>
 
-        <Image x:Name="Ico6" Grid.Row="7" Grid.Column="1" Source="pack://application:,,,/resources/icons/userIco.png"/>
+        <Image x:Name="Ico6" Grid.Row="7" Grid.Column="1" 
+               Source="pack://application:,,,/resources/icons/userIco.png"/>
         <Label Content="New list" Grid.Row="7" Grid.Column="2"/>
 
-        <Image x:Name="topBG" Source="pack://application:,,,/resources/background/topBG.png" Grid.Row="0" Grid.RowSpan="4" Grid.Column="5" Grid.ColumnSpan="6" Stretch="UniformToFill" MaxHeight="128"/>
+        <Image x:Name="topBG" Source="pack://application:,,,/resources/background/topBG.png" 
+               Grid.Row="0" Grid.RowSpan="4" Grid.Column="5" Grid.ColumnSpan="6" 
+               Stretch="UniformToFill" MaxHeight="128"/>
 
-        <Button x:Name="taskAdderButton" Grid.Column="9" Grid.Row="9" Content="Add a task" Background="#FF171717" Foreground="White" Opacity="0.75" Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="TaskAdderButton_Click"/>
-        <Label Content="My day" Grid.Row="1" Grid.RowSpan="2" Grid.Column="5" FontSize="46" Margin="10,0" FontFamily="Segoe UI" Background="#00000000" Foreground="White"/>
-        <Label x:Name="myDayDate" Content="DayOfWeek, Month Day" Grid.Row="3" Grid.Column="5" Margin="10,0" Foreground="White"/>
+        <Button x:Name="taskAdderButton" Grid.Column="9" Grid.Row="9" Content="Add a task" 
+                Background="#FF171717" Foreground="White" Opacity="0.75" Width="90" Height="35" 
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="TaskAdderButton_Click"/>
+        <Label Content="My day" Grid.Row="1" Grid.RowSpan="2" Grid.Column="5" FontSize="46"
+               Margin="10,0" FontFamily="Segoe UI" Background="#00000000" Foreground="White"/>
+        <Label x:Name="myDayDate" Content="DayOfWeek, Month Day" Grid.Row="3" Grid.Column="5" 
+               Margin="10,0" Foreground="White"/>
 
-        <ListBox x:Name="taskList" Grid.Row="4" Grid.Column="5" Grid.RowSpan="5" Grid.ColumnSpan="5"
-                 Height="216"/>
-        
-        <ContentControl Grid.Row="4" Grid.RowSpan="7" Grid.Column="5" Grid.ColumnSpan="6" Content="{Binding}"/>
+        <ItemsControl Grid.Column="5" Grid.Row="4" Grid.RowSpan="6" Grid.ColumnSpan="5" Margin="0,0,0,35">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding name}"/>
+                        <CheckBox IsChecked="{Binding isChecked}" Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <ContentControl Grid.Row="4" Grid.RowSpan="7" Grid.Column="5" Grid.ColumnSpan="6" 
+                        Content="{Binding}"/>
 
     </Grid>
 </Window>
