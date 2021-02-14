@@ -57,7 +57,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GenericDataService.cs" />
+    <Compile Include="Services\IDataService.cs" />
     <Compile Include="ToDoAppDbContext.cs" />
+    <Compile Include="ToDoAppDbContextFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

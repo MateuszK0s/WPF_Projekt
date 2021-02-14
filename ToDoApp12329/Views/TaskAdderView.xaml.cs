@@ -7,6 +7,10 @@ using System.Windows.Controls;
 
 namespace ToDoApp12329.Views
 {
+    using ToDoApp12329.Domain.Models;
+    using ToDoApp12329.Domain.Services;
+    using ToDoApp12329.EntityFramework;
+    using ToDoApp12329.EntityFramework.Services;
     using ToDoApp12329.ViewModels;
     /// <summary>
     /// Interaction logic for TaskAdderView.xaml
@@ -29,7 +33,13 @@ namespace ToDoApp12329.Views
 
         private void saveTaskButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            IDataService<TaskItem> taskItem = new GenericDataService<TaskItem>(new ToDoAppDbContextFactory());
+
+            taskItem.Create(new TaskItem
+            {
+                TaskName = "dsadsa",
+                TaskDescription = taskTextBox.Text
+            }) ;
         }
     }
 }
