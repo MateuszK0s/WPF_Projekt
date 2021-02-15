@@ -28,7 +28,7 @@
         <ItemsControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="216">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Vertical"/>
+                    <VirtualizingStackPanel Orientation="Vertical" Initialized="testInit"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 

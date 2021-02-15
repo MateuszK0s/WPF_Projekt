@@ -22,7 +22,7 @@ namespace ToDoApp12329
         public MainWindow()
         {
             InitializeComponent();
-            MyDateSet();            
+            MyDateSet();
         }
 
         private string MyDateSet()

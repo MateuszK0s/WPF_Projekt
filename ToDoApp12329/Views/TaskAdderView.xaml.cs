@@ -41,5 +41,11 @@ namespace ToDoApp12329.Views
                 TaskDescription = taskTextBox.Text
             }) ;
         }
+
+        private void testInit(object sender, EventArgs e)
+        {
+            IDataService<TaskItem> taskItem = new GenericDataService<TaskItem>(new ToDoAppDbContextFactory());
+            taskItem.GetAll();
+        }
     }
 }

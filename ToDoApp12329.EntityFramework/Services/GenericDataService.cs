@@ -35,7 +35,12 @@ namespace ToDoApp12329.EntityFramework.Services
 
         public Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
+            using (ToDoAppDbContext context = _contextFactory.CreateContext())
+            {
+                IEnumerable<T> entities = context.Set<T>().ToList();
+
+                return (Task<IEnumerable<T>>)entities;
+            }
         }
 
         public Task<T> Update(int Id, T entity)
