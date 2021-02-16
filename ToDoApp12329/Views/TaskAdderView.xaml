@@ -21,6 +21,7 @@
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
@@ -46,12 +47,15 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="Name" Width="411"/>
-        <TextBox x:Name="taskTextBox" Grid.Row="3" Grid.Column="1" Width="400" HorizontalAlignment="Left"/>
-        <Button x:Name="saveTaskButton" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Content="Add a task" 
+
+        <TextBlock Text="Task name:" Grid.Column="1" Grid.Row="2" Width="70"/>
+        <TextBlock Text="Description:" Grid.Column="1" Grid.Row="3" Width="70"/>
+
+        <TextBox x:Name="taskNameTextBox" Grid.Row="2" Grid.Column="2" Width="330"/>
+        <TextBox x:Name="taskTextBox" Grid.Row="3" Grid.Column="2" Width="330" HorizontalAlignment="Left"/>
+        <Button x:Name="saveTaskButton" Grid.Row="2" Grid.RowSpan="2" Grid.Column="3" Content="Add a task" 
                 Width="90" Height="35" Background="#FF171717" Foreground="White" Opacity="0.75" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="saveTaskButton_Click"/>
+                HorizontalAlignment="Right" Margin="11,0,0,0" VerticalAlignment="Bottom" Click="saveTaskButton_Click"/>
         
     </Grid>
 </UserControl>

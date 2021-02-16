@@ -28,9 +28,14 @@ namespace ToDoApp12329.EntityFramework.Services
             }
         }
 
-        public Task<T> Get(int Id)
+        public async Task<T> Get(int Id)
         {
-            throw new NotImplementedException();
+            using (ToDoAppDbContext context = _contextFactory.CreateContext())
+            {
+                T entity = context.Set<T>().FirstOrDefault((e) => e.Id == Id);
+
+                return entity;
+            }
         }
 
         public Task<IEnumerable<T>> GetAll()

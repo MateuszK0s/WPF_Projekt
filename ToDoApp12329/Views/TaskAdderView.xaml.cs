@@ -17,10 +17,11 @@ namespace ToDoApp12329.Views
     /// </summary>
     public partial class TaskAdderView : UserControl
     {
+        private TaskItem _taskItem = new TaskItem();
         public TaskAdderView()
-        {
-            InitializeComponent();
-            DataContext = new DataObject();
+        {            
+            InitializeComponent();            
+            DataContext = new DataObject();            
         }
 
         class DataObject
@@ -37,15 +38,14 @@ namespace ToDoApp12329.Views
 
             taskItem.Create(new TaskItem
             {
-                TaskName = "dsadsa",
+                TaskName = taskNameTextBox.Text,
                 TaskDescription = taskTextBox.Text
             }) ;
         }
 
         private void testInit(object sender, EventArgs e)
         {
-            IDataService<TaskItem> taskItem = new GenericDataService<TaskItem>(new ToDoAppDbContextFactory());
-            taskItem.GetAll();
+            
         }
     }
 }

@@ -10,6 +10,8 @@ namespace ToDoApp12329.Command
 {
     public class CreateTaskCommand : ICommand
     {
+        public System.Windows.Input.CommandBindingCollection CommandBindings { get; }
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
