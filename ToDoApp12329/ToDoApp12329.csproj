@@ -71,6 +71,9 @@
     <Compile Include="Views\TaskAdderView.xaml.cs">
       <DependentUpon>TaskAdderView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\TaskAdderWindow.xaml.cs">
+      <DependentUpon>TaskAdderWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +87,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\TaskAdderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TaskAdderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

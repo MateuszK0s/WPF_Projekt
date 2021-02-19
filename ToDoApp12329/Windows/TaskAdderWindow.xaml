@@ -1,0 +1,58 @@
+﻿<Window x:Class="ToDoApp12329.Windows.TaskAdderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoApp12329.Windows"
+        WindowStartupLocation="CenterScreen" 
+        mc:Ignorable="d" FontSize="14"
+        Title="TaskAdderWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="480"/>
+            <ColumnDefinition Width="*"/>            
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="1" Text="Task name:"/>
+            <TextBox x:Name="taskNameTextBox" Grid.Row="2"/>
+
+            <TextBlock Grid.Row="3" Text="Task description:"/>
+            <TextBox x:Name="taskDescriptionTextBox" Grid.Row="4"/>            
+        </Grid>
+
+        <Grid Grid.Column="2" Grid.Row="1" Margin="20,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0"/>
+            </Grid.RowDefinitions>
+
+            <Calendar Grid.Row="1" Width="252">
+                <Calendar.RenderTransform>
+                    <ScaleTransform  ScaleX="1.3" ScaleY="1.3"/>
+                </Calendar.RenderTransform>
+            </Calendar>
+            <Button Grid.Row="2" Margin="0,20,0,0" Content="Save a task" VerticalAlignment="Bottom" 
+                    Height="40" Click="TaskSaverButtonClick"/>
+        </Grid>        
+    </Grid>
+</Window>

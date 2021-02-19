@@ -48,9 +48,18 @@ namespace ToDoApp12329.EntityFramework.Services
             }
         }
 
-        public Task<T> Update(int Id, T entity)
+        public async Task<T> Update(int id, T entity)
         {
-            throw new NotImplementedException();
+            using (ToDoAppDbContext context = _contextFactory.CreateContext())
+            {
+                entity.Id = id;
+
+                context.Set<T>().Add(entity);
+
+                await context.SaveChangesAsync();
+
+                return entity;
+            }
         }
     }
 }

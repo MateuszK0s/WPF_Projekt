@@ -7,13 +7,14 @@
         xmlns:viewmodels="clr-namespace:ToDoApp12329.ViewModels"
         xmlns:views="clr-namespace:ToDoApp12329.Views"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
         Title="MainWindow" Height="450" Width="800">
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <DataTemplate x:Name="TaskAdderVM" DataType="{x:Type viewmodels:TaskAdderViewModel}">
             <views:TaskAdderView DataContext="{Binding}"/>
         </DataTemplate>
-    </Window.Resources>
+    </Window.Resources>-->
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,7 +27,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -39,7 +40,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
@@ -74,28 +74,79 @@
 
         <Image x:Name="Ico6" Grid.Row="7" Grid.Column="1" 
                Source="pack://application:,,,/resources/icons/userIco.png"/>
-        <Label Content="New list" Grid.Row="7" Grid.Column="2"/>
+        
+        <Button x:Name="saveTaskButton" Grid.Row="7" Grid.Column="2" Background="white"
+                Content="Add a task" HorizontalContentAlignment="Left" BorderBrush="white"
+                Click="TaskAdderButton_Click"/>
 
         <Image x:Name="topBG" Source="pack://application:,,,/resources/background/topBG.png" 
                Grid.Row="0" Grid.RowSpan="4" Grid.Column="5" Grid.ColumnSpan="6" 
                Stretch="UniformToFill" MaxHeight="128"/>
 
-        <Button x:Name="taskAdderButton" Grid.Column="9" Grid.Row="9" Content="Add a task" 
+        <!--<Button x:Name="taskAdderButton" Grid.Column="9" Grid.Row="9" Content="Add a task" 
                 Background="#FF171717" Foreground="White" Opacity="0.75" Width="90" Height="35" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="TaskAdderButton_Click"/>
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="TaskAdderButton_Click"/>-->
         <Label Content="My day" Grid.Row="1" Grid.RowSpan="2" Grid.Column="5" FontSize="46"
                Margin="10,0" FontFamily="Segoe UI" Background="#00000000" Foreground="White"/>
         <Label x:Name="myDayDate" Content="DayOfWeek, Month Day" Grid.Row="3" Grid.Column="5" 
                Margin="10,0" Foreground="White"/>
 
-        <ItemsControl Grid.Column="5" Grid.Row="4" Grid.RowSpan="6" Grid.ColumnSpan="5" Margin="0,0,0,35">
+        <StackPanel  Grid.Row="4" Grid.RowSpan="6" Grid.Column="5" Grid.ColumnSpan="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+                <ItemsControl Grid.Column="0" Grid.Row="0" Height="235" ItemsSource="{Binding Tasks}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <TextBlock Margin="20,0,0,0" Text="Task name:" Grid.Column="0" Grid.Row="1" Width="70" 
+                           HorizontalAlignment="Left"/>
+                <TextBlock Margin="20,0,0,0" Text="Description:" Grid.Column="0" Grid.Row="2" 
+                           Width="70" HorizontalAlignment="Left"/>
+
+                <TextBox x:Name="taskNameTextBox" Grid.Row="1" Grid.Column="1" Width="430" 
+                         Margin="0,0,0,5"/>
+                <TextBox x:Name="taskTextBox" Grid.Row="2" Grid.Column="1" Width="430" />
+                
+            </Grid>            
+        </StackPanel>
+        
+
+        <!--<ItemsControl Grid.Column="5" Grid.Row="4" Grid.RowSpan="6" Grid.ColumnSpan="5" 
+                      Margin="0,0,0,35" ItemsSource="{Binding Tasks}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
+            <ItemsControl.ItemTemplate >
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -111,7 +162,7 @@
         </ItemsControl>
 
         <ContentControl Grid.Row="4" Grid.RowSpan="7" Grid.Column="5" Grid.ColumnSpan="6" 
-                        Content="{Binding}"/>
+                        Content="{Binding}"/>-->
 
     </Grid>
 </Window>

@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using TodoApp.EntityFramework.Services;
 using ToDoApp12329.Domain.Models;
 using ToDoApp12329.Domain.Services;
 using ToDoApp12329.EntityFramework;
 using ToDoApp12329.EntityFramework.Services;
 using ToDoApp12329.ViewModels;
-
+using ToDoApp12329.Windows;
 
 namespace ToDoApp12329
 {
@@ -21,8 +22,9 @@ namespace ToDoApp12329
     {
         public MainWindow()
         {
+            IDataService<TaskItem> Tasks = new DataTaskService(new ToDoAppDbContextFactory());
             InitializeComponent();
-            MyDateSet();
+            MyDateSet();            
         }
 
         private string MyDateSet()
@@ -40,9 +42,19 @@ namespace ToDoApp12329
 
         private void TaskAdderButton_Click(object sender, RoutedEventArgs e)
         {
-            var Tasks = new TaskAdderViewModel();
-            Tasks.tasks = new ObservableCollection<TaskViewModel>();
-            this.DataContext = Tasks;
-        }
+            TaskAdderWindow AddTaskWindow = new TaskAdderWindow();
+            this.Close();
+            AddTaskWindow.ShowDialog();
+
+            //IDataService<TaskItem> taskItem = new GenericDataService<TaskItem>(new ToDoAppDbContextFactory());
+
+            //taskItem.Create(new TaskItem
+            //{
+            //    TaskName = taskNameTextBox.Text,
+            //    TaskDescription = taskTextBox.Text
+            //});
+
+            //InitializeComponent();
+        }        
     }
 }
