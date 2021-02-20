@@ -7,6 +7,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using ToDoApp12329.Domain.Models;
+using ToDoApp12329.Domain.Services;
+using ToDoApp12329.EntityFramework;
+using ToDoApp12329.EntityFramework.Services;
 
 namespace ToDoApp12329.Windows
 {
@@ -22,20 +26,17 @@ namespace ToDoApp12329.Windows
 
         private void TaskSaverButtonClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            this.Owner = mainWindow;
-        }
+            IDataService<TaskItem> taskItem = new GenericDataService<TaskItem>(new ToDoAppDbContextFactory());
 
-        public void ShowDialog(Window owner)
-        {
-            this.Owner = owner;
-            this.ShowDialog();
-        }
+            taskItem.Create(new TaskItem
+            {
+                TaskName = this.taskNameTextBox.Text,
+                TaskDescription = this.taskDescriptionTextBox.Text,
+                TaskDate = this.TaskDataPicker.SelectedDate
+                
+            });
 
-        public void Show(Window owner)
-        {
-            this.Owner = owner;
-            this.Show();
+            this.Close();
         }
     }
 }

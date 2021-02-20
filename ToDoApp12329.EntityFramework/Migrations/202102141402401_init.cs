@@ -14,6 +14,7 @@
                         Id = c.Int(nullable: false, identity: true),
                         TaskName = c.String(),
                         TaskDescription = c.String(),
+                        TaskDate = c.DateTime()
                     })
                 .PrimaryKey(t => t.Id);
             

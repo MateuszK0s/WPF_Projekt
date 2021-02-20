@@ -10,5 +10,6 @@ namespace ToDoApp12329.Domain.Models
     {
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
+        public DateTime? TaskDate { get; set; }
     }
 }

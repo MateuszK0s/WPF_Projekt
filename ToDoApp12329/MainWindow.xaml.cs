@@ -35,26 +35,10 @@ namespace ToDoApp12329
             return (string)(myDayDate.Content = myDayDateString);
         }
 
-        public void LoadTaskAdder()
-        {
-             
-        }
-
         private void TaskAdderButton_Click(object sender, RoutedEventArgs e)
         {
             TaskAdderWindow AddTaskWindow = new TaskAdderWindow();
-            this.Close();
-            AddTaskWindow.ShowDialog();
-
-            //IDataService<TaskItem> taskItem = new GenericDataService<TaskItem>(new ToDoAppDbContextFactory());
-
-            //taskItem.Create(new TaskItem
-            //{
-            //    TaskName = taskNameTextBox.Text,
-            //    TaskDescription = taskTextBox.Text
-            //});
-
-            //InitializeComponent();
+            AddTaskWindow.ShowDialog();            
         }        
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace ToDoApp12329.EntityFramework.Services
 {
     public class GenericDataService<T> : IDataService<T> where T : DomainModel
     {
+
         private readonly ToDoAppDbContextFactory _contextFactory;
 
         public GenericDataService(ToDoAppDbContextFactory contextFactory)
@@ -19,7 +21,7 @@ namespace ToDoApp12329.EntityFramework.Services
 
         public async Task<T> Create(T entity)
         {
-            using(ToDoAppDbContext context = _contextFactory.CreateContext())
+            using (ToDoAppDbContext context = _contextFactory.CreateContext())
             {
                 var createdEntity = context.Set<T>().Add(entity);
                 await context.SaveChangesAsync();
@@ -28,11 +30,23 @@ namespace ToDoApp12329.EntityFramework.Services
             }
         }
 
-        public async Task<T> Get(int Id)
+        public async Task<bool> Delete(int id)
         {
             using (ToDoAppDbContext context = _contextFactory.CreateContext())
             {
-                T entity = context.Set<T>().FirstOrDefault((e) => e.Id == Id);
+                T entity = context.Set<T>().FirstOrDefault((e) => e.Id == id);
+                context.Set<T>().Remove(entity);
+                await context.SaveChangesAsync();
+
+                return true;
+            }
+        }
+
+        public async Task<T> Get(int id)
+        {
+            using (ToDoAppDbContext context = _contextFactory.CreateContext())
+            {
+                T entity = context.Set<T>().FirstOrDefault((e) => e.Id == id);
 
                 return entity;
             }
@@ -61,5 +75,6 @@ namespace ToDoApp12329.EntityFramework.Services
                 return entity;
             }
         }
+
     }
 }

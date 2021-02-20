@@ -44,7 +44,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <DatePicker Grid.Column="1"/>
+            <DatePicker x:Name="TaskDataPicker" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                        Grid.Column="1"/>
             <Button Grid.Row="2" Margin="0,0,20,0" Content="Save a task" Height="40" 
                     Click="TaskSaverButtonClick"/>
         </Grid>        
