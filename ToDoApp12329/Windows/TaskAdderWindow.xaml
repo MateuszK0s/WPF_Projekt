@@ -6,11 +6,10 @@
         xmlns:local="clr-namespace:ToDoApp12329.Windows"
         WindowStartupLocation="CenterScreen" 
         mc:Ignorable="d" FontSize="14"
-        Title="TaskAdderWindow" Height="450" Width="800">
+        Title="TaskAdderWindow" Height="400" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="480"/>
             <ColumnDefinition Width="*"/>            
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
@@ -18,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
@@ -38,21 +38,15 @@
             <TextBox x:Name="taskDescriptionTextBox" Grid.Row="4"/>            
         </Grid>
 
-        <Grid Grid.Column="2" Grid.Row="1" Margin="20,0,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="0"/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="2" Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <Calendar Grid.Row="1" Width="252">
-                <Calendar.RenderTransform>
-                    <ScaleTransform  ScaleX="1.3" ScaleY="1.3"/>
-                </Calendar.RenderTransform>
-            </Calendar>
-            <Button Grid.Row="2" Margin="0,20,0,0" Content="Save a task" VerticalAlignment="Bottom" 
-                    Height="40" Click="TaskSaverButtonClick"/>
+            <DatePicker Grid.Column="1"/>
+            <Button Grid.Row="2" Margin="0,0,20,0" Content="Save a task" Height="40" 
+                    Click="TaskSaverButtonClick"/>
         </Grid>        
     </Grid>
 </Window>
