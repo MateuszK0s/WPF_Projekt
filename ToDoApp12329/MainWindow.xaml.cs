@@ -38,7 +38,7 @@ namespace ToDoApp12329
         private void TaskAdderButton_Click(object sender, RoutedEventArgs e)
         {
             TaskAdderWindow AddTaskWindow = new TaskAdderWindow();
-            AddTaskWindow.ShowDialog();            
+            AddTaskWindow.ShowDialog();
         }        
     }
 }
