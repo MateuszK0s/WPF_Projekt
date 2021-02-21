@@ -35,8 +35,10 @@ namespace ToDoApp12329.Windows
                 TaskDate = this.TaskDataPicker.SelectedDate
                 
             });
+            
 
             this.Close();
+
         }
     }
 }

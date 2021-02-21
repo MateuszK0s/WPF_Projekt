@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +22,30 @@ namespace ToDoApp12329
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public List<TaskItem> _tasks;
+        public List<TaskItem> Tasks
+        {
+            get { return _tasks; }
+            set { _tasks = value; this.RaisePropertyChanged("Tasks"); }
+        }
+
+
         public MainWindow()
         {
-            IDataService<TaskItem> Tasks = new DataTaskService(new ToDoAppDbContextFactory());
+            DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
+            Tasks = taskService.GetAllItems();
+
+            DataContext = this;
+
             InitializeComponent();
-            MyDateSet();            
+
+            MyDateSet();
+
+            Console.WriteLine(Tasks.First().Id);
+            Console.WriteLine(Tasks.First().TaskName);
         }
 
         private string MyDateSet()
@@ -39,6 +60,14 @@ namespace ToDoApp12329
         {
             TaskAdderWindow AddTaskWindow = new TaskAdderWindow();
             AddTaskWindow.ShowDialog();
-        }        
+        }
+
+        private void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

@@ -76,5 +76,14 @@ namespace ToDoApp12329.EntityFramework.Services
             }
         }
 
+        public List<T> GetAllItems()
+        {
+            using (ToDoAppDbContext context = _contextFactory.CreateContext())
+            {
+                List<T> entities = context.Set<T>().ToList();
+
+                return entities;
+            }
+        }
     }
 }
