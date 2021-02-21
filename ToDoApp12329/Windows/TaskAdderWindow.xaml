@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ToDoApp12329.Windows"
         WindowStartupLocation="CenterScreen" 
         mc:Ignorable="d" FontSize="14"
-        Title="TaskAdderWindow" Height="400" Width="600">
+        Title="Add a task" Height="400" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -42,12 +42,15 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <DatePicker x:Name="TaskDataPicker" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                        Grid.Column="1"/>
+                        Grid.Column="2"/>
             <Button Grid.Row="2" Margin="0,0,20,0" Content="Save a task" Height="40" 
                     Click="TaskSaverButtonClick"/>
+            <Button Grid.Row="2" Grid.Column="1" Margin="0,0,20,0" Content="Cancel" Height="40" 
+                    Click="CancelButtonClick"/>
         </Grid>        
     </Grid>
 </Window>

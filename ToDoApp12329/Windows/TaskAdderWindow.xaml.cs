@@ -35,10 +35,13 @@ namespace ToDoApp12329.Windows
                 TaskDate = this.TaskDataPicker.SelectedDate
                 
             });
-            
 
             this.Close();
+        }
 
+        private void CancelButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

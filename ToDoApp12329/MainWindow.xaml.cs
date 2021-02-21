@@ -37,15 +37,11 @@ namespace ToDoApp12329
         {
             DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
             Tasks = taskService.GetAllItems();
-
             DataContext = this;
 
             InitializeComponent();
 
             MyDateSet();
-
-            Console.WriteLine(Tasks.First().Id);
-            Console.WriteLine(Tasks.First().TaskName);
         }
 
         private string MyDateSet()
@@ -64,10 +60,7 @@ namespace ToDoApp12329
 
         private void RaisePropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
