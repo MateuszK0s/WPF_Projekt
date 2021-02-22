@@ -32,17 +32,30 @@ namespace ToDoApp12329.Views
             set { _tasks = value; this.RaisePropertyChanged("Tasks"); }
         }
 
-        public MyDayTasksView()
+        private int _tasksSum;
+        public int TasksSum
         {
-            loadTodayTasks();            
-            InitializeComponent();
+            get { return _tasksSum; }
+            set { _tasksSum = value; this.RaisePropertyChanged("Tasks"); }
         }
 
-        private void loadTodayTasks()
+        private int _allTasksSum;
+        public int AllTasksSum
+        {
+            get { return _allTasksSum; }
+            set { _allTasksSum = value; this.RaisePropertyChanged("Tasks"); }
+        }
+
+        public MyDayTasksView()
         {
             DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
+            Tasks = taskService.GetAllItems();
+            AllTasksSum = Tasks.Count;
             DateTime today = DateTime.Today;
             Tasks = taskService.GetByDates(today);
+            TasksSum = Tasks.Count;
+
+            InitializeComponent();
         }
 
         private void RaisePropertyChanged(string propertyName)

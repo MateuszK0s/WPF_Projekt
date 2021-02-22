@@ -75,7 +75,7 @@
                Source="pack://application:,,,/resources/icons/tasksIco.png"/>
             <Button x:Name="TasksButton" Background="white" Content="Tasks" HorizontalContentAlignment="Left"
                     BorderBrush="white" Grid.Row="4" Grid.Column="2" Click="TasksButton_Click"/>
-            <Label Content="" Grid.Row="4" Grid.Column="3" Opacity="0.6"/>
+            <Label Content="{Binding AllTasksSum}" Grid.Row="4" Grid.Column="3" Opacity="0.6"/>
 
             <Border Grid.Column="4" Grid.RowSpan="11" Background="Black" Width="1" Opacity="0.1" 
                 Margin="10,0,0,0"/>

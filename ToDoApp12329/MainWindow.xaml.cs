@@ -38,13 +38,14 @@ namespace ToDoApp12329
         public int TasksSum
         {
             get { return _tasksSum; }
-            set { _tasksSum = Tasks.Capacity; this.RaisePropertyChanged("Tasks"); }
+            set { _tasksSum = Tasks.Count; this.RaisePropertyChanged("Tasks"); }
         }
 
 
         public MainWindow()
         {
             DataContext = new MyDayTasksView();            
+            Console.WriteLine(TasksSum);
             InitializeComponent();
             MyDateSet();
         }
