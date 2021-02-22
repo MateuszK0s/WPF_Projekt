@@ -26,6 +26,7 @@ namespace ToDoApp12329
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         private List<TaskItem> _tasks;
         public List<TaskItem> Tasks
         {
@@ -33,21 +34,18 @@ namespace ToDoApp12329
             set { _tasks = value; this.RaisePropertyChanged("Tasks"); }
         }
 
-        private List<TaskItem> _TasksSum;
-        public List<TaskItem> TasksSum
+        private int _tasksSum;
+        public int TasksSum
         {
-            get { return _TasksSum; }
-            set { _TasksSum = value; this.RaisePropertyChanged("Tasks"); }
+            get { return _tasksSum; }
+            set { _tasksSum = Tasks.Capacity; this.RaisePropertyChanged("Tasks"); }
         }
 
 
         public MainWindow()
         {
-            //DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
-            //Tasks = taskService.GetAllItems();
-            
+            DataContext = new MyDayTasksView();            
             InitializeComponent();
-
             MyDateSet();
         }
 

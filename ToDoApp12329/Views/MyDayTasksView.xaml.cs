@@ -34,15 +34,22 @@ namespace ToDoApp12329.Views
 
         public MyDayTasksView()
         {
+            loadTodayTasks();            
+            InitializeComponent();
+        }
+
+        private void loadTodayTasks()
+        {
             DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
             DateTime today = DateTime.Today;
             Tasks = taskService.GetByDates(today);
-            InitializeComponent();
         }
 
         private void RaisePropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        
     }
 }
