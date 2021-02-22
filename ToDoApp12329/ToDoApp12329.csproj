@@ -69,10 +69,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\CreateTaskCommand.cs" />
+    <Compile Include="ViewModels\MyDayTasksViewModel.cs" />
     <Compile Include="ViewModels\TaskAdderViewModel.cs" />
+    <Compile Include="ViewModels\TaskListViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
+    <Compile Include="Views\MyDayTasksView.xaml.cs">
+      <DependentUpon>MyDayTasksView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TaskAdderView.xaml.cs">
       <DependentUpon>TaskAdderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskListView.xaml.cs">
+      <DependentUpon>TaskListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\TaskAdderWindow.xaml.cs">
       <DependentUpon>TaskAdderWindow.xaml</DependentUpon>
@@ -89,7 +97,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MyDayTasksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TaskAdderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TaskListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +156,18 @@
       <Project>{4ba48132-9c5b-4026-82e0-410c2d30c13b}</Project>
       <Name>ToDoApp12329.EntityFramework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\usersIco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\plusIco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\mydayIco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons\tasksIco.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

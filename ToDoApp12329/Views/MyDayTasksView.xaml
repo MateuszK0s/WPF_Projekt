@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="ToDoApp12329.Views.MyDayTasksView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToDoApp12329.Views"
+             mc:Ignorable="d" Background="white"
+             d:DesignHeight="261" d:DesignWidth="521">
+    <Grid x:Name="TaskListContainer">
+        <DataGrid IsReadOnly="True" ItemsSource="{Binding Tasks}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="150" Header="Name" Binding="{Binding TaskName}"/>
+                <DataGridTextColumn Width="*" Header="Descirption" Binding="{Binding TaskDescription}"/>
+                <DataGridTextColumn Width="100" Header="Date" Binding="{Binding TaskDate}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

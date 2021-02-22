@@ -15,6 +15,7 @@ using ToDoApp12329.Domain.Services;
 using ToDoApp12329.EntityFramework;
 using ToDoApp12329.EntityFramework.Services;
 using ToDoApp12329.ViewModels;
+using ToDoApp12329.Views;
 using ToDoApp12329.Windows;
 
 namespace ToDoApp12329
@@ -25,20 +26,26 @@ namespace ToDoApp12329
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public List<TaskItem> _tasks;
+        private List<TaskItem> _tasks;
         public List<TaskItem> Tasks
         {
             get { return _tasks; }
             set { _tasks = value; this.RaisePropertyChanged("Tasks"); }
         }
 
+        private List<TaskItem> _TasksSum;
+        public List<TaskItem> TasksSum
+        {
+            get { return _TasksSum; }
+            set { _TasksSum = value; this.RaisePropertyChanged("Tasks"); }
+        }
+
 
         public MainWindow()
         {
-            DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
-            Tasks = taskService.GetAllItems();
-            DataContext = this;
-
+            //DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
+            //Tasks = taskService.GetAllItems();
+            
             InitializeComponent();
 
             MyDateSet();
@@ -61,6 +68,16 @@ namespace ToDoApp12329
         private void RaisePropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void TasksButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new TaskListView();
+        }
+
+        private void MyDayButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new MyDayTasksView();
         }
     }
 }

@@ -10,11 +10,14 @@
         WindowStartupLocation="CenterScreen" 
         Title="WSEIToDoApp" Height="450" Width="800">
 
-    <!--<Window.Resources>
-        <DataTemplate x:Name="TaskAdderVM" DataType="{x:Type viewmodels:TaskAdderViewModel}">
-            <views:TaskAdderView DataContext="{Binding}"/>
+    <Window.Resources>
+        <DataTemplate x:Name="TaskViewTemplate" DataType="{x:Type viewmodels:TaskListViewModel}">
+            <views:TaskListView DataContext="{Binding}"/>
         </DataTemplate>
-    </Window.Resources>-->
+        <DataTemplate x:Name="MyDayViewTemplate" DataType="{x:Type viewmodels:MyDayTasksViewModel}">
+            <views:MyDayTasksView DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
 
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
@@ -42,7 +45,7 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0"/>
-                <ColumnDefinition Width="30"/>
+                <ColumnDefinition MinWidth="30"/>
                 <ColumnDefinition Width="170"/>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="0"/>
@@ -57,19 +60,21 @@
             <Border Height="1" Grid.Row="1" Background="Black" Opacity="0.1" Margin="0,39,10,0" 
                 Grid.ColumnSpan="3" Grid.Column="1"/>
 
-            <Image x:Name="Ico2" Grid.Row="2" Grid.Column="1" 
-               Source="pack://application:,,,/resources/icons/userIco.png"/>
-            <Label Content="My Day" Grid.Row="2" Grid.Column="2"/>
-            <Label Content="1" Grid.Row="2" Grid.Column="3" Opacity="0.6"/>
+            <Image x:Name="Ico2" Grid.Row="2" Grid.Column="1" Margin="3" 
+               Source="pack://application:,,,/resources/icons/mydayIco.png"/>
+            <Button x:Name="MyDayButton" Background="white" HorizontalContentAlignment="Left"
+                    BorderBrush="white" Content="My Day" Grid.Row="2" Grid.Column="2" Click="MyDayButton_Click"/>
+            <Label Content="{Binding TasksSum}" Grid.Row="2" Grid.Column="3" Opacity="0.6"/>
 
-            <Image x:Name="Ico3" Grid.Row="3" Grid.Column="1" 
-               Source="pack://application:,,,/resources/icons/userIco.png"/>
-            <Label Content="Important" Grid.Row="3" Grid.Column="2"/>
+            <Image x:Name="Ico3" Grid.Row="3" Grid.Column="1" Margin="3"
+               Source="pack://application:,,,/resources/icons/usersIco.png"/>
+            <Label Content="Users" Grid.Row="3" Grid.Column="2"/>
             <Label Content="2" Grid.Row="3" Grid.Column="3" Opacity="0.6"/>
 
-            <Image x:Name="Ico4" Grid.Row="4" Grid.Column="1" 
-               Source="pack://application:,,,/resources/icons/userIco.png"/>
-            <Label Content="Calendar" Grid.Row="4" Grid.Column="2"/>
+            <Image x:Name="Ico4" Grid.Row="4" Grid.Column="1" Margin="3" 
+               Source="pack://application:,,,/resources/icons/tasksIco.png"/>
+            <Button x:Name="TasksButton" Background="white" Content="Tasks" HorizontalContentAlignment="Left"
+                    BorderBrush="white" Grid.Row="4" Grid.Column="2" Click="TasksButton_Click"/>
             <Label Content="" Grid.Row="4" Grid.Column="3" Opacity="0.6"/>
 
             <Border Grid.Column="4" Grid.RowSpan="11" Background="Black" Width="1" Opacity="0.1" 
@@ -77,10 +82,10 @@
             <Border Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Background="Black" Height="1" 
                 Opacity="0.1" Margin="0,17,10,10"/>
 
-            <Image x:Name="Ico6" Grid.Row="7" Grid.Column="1" 
-               Source="pack://application:,,,/resources/icons/userIco.png"/>
-
-            <Button x:Name="saveTaskButton" Grid.Row="7" Grid.Column="2" Background="white"
+            <Image x:Name="Ico6" Grid.Row="7" Grid.Column="1" Margin="3"
+               Source="pack://application:,,,/resources/icons/plusIco.png"/>
+            
+            <Button x:Name="addTaskButton" Grid.Row="7" Grid.Column="2" Background="white"
                 Content="Add a task" HorizontalContentAlignment="Left" BorderBrush="white"
                 Click="TaskAdderButton_Click"/>
         </Grid>
@@ -106,15 +111,16 @@
             <Label x:Name="myDayDate" Content="DayOfWeek, Month Day" Grid.Row="2" 
                Margin="10,0" Foreground="White"/>
 
-            <Grid x:Name="TaskListContainer" Grid.Row="4" Margin="10,10,10,0">                
+            <ContentControl Grid.Row="4" Margin="10,10,10,0" Content="{Binding}"/>
+            <!--<Grid x:Name="TaskListContainer" >
                 <DataGrid IsReadOnly="True" ItemsSource="{Binding Tasks}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="150" Header="Name" Binding="{Binding TaskName}"/>
                         <DataGridTextColumn Width="*" Header="Descirption" Binding="{Binding TaskDescription}"/>
                         <DataGridTextColumn Width="100" Header="Date" Binding="{Binding TaskDate}"/>
                     </DataGrid.Columns>
-                </DataGrid>                      
-            </Grid>
+                </DataGrid>
+            </Grid>-->
         </Grid>
     </Grid>
 </Window>

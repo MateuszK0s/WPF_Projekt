@@ -53,6 +53,16 @@ namespace TodoApp.EntityFramework.Services
             }
         }
 
+        public List<TaskItem> GetByDates(DateTime? date)
+        {
+            using (ToDoAppDbContext context = _contextFactory.CreateContext())
+            {
+                List<TaskItem> entities = context.Set<TaskItem>().Where(((e) => e.TaskDate == date)).ToList();
+
+                return entities;
+            }
+        }
+
         public async Task<IEnumerable<TaskItem>> GetAll()
         {
             using (ToDoAppDbContext context = _contextFactory.CreateContext())
