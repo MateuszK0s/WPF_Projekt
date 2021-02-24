@@ -38,13 +38,21 @@ namespace ToDoApp12329
         public int TasksSum
         {
             get { return _tasksSum; }
-            set { _tasksSum = Tasks.Count; this.RaisePropertyChanged("Tasks"); }
+            set { _tasksSum = Tasks.Count; this.RaisePropertyChanged("TasksSum"); }
+        }
+
+        private int _allTasksSum;
+        public int AllTasksSum
+        {
+            get { return _allTasksSum; }
+            set { _allTasksSum = value; this.RaisePropertyChanged("AllTasksSum"); }
         }
 
 
         public MainWindow()
         {
-            DataContext = new MyDayTasksView();            
+            UpdateTasksList();
+            DataContext = new MyDayTasksView();
             Console.WriteLine(TasksSum);
             InitializeComponent();
             MyDateSet();
@@ -60,7 +68,7 @@ namespace ToDoApp12329
 
         private void TaskAdderButton_Click(object sender, RoutedEventArgs e)
         {
-            TaskAdderWindow AddTaskWindow = new TaskAdderWindow();
+            TaskAdderWindow AddTaskWindow = new TaskAdderWindow(this);
             AddTaskWindow.ShowDialog();
         }
 
@@ -77,6 +85,17 @@ namespace ToDoApp12329
         private void MyDayButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new MyDayTasksView();
+        }
+
+        public void UpdateTasksList()
+        {
+            DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
+            DateTime today = DateTime.Today;
+            Tasks = taskService.GetByDates(today);
+            TasksSum = Tasks.Count;
+            Tasks = taskService.GetAllItems();
+            AllTasksSum = Tasks.Count;
+
         }
     }
 }

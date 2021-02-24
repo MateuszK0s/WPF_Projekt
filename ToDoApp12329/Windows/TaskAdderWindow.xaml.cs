@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +18,13 @@ namespace ToDoApp12329.Windows
     /// <summary>
     /// Interaction logic for TaskAdderWindow.xaml
     /// </summary>
-    public partial class TaskAdderWindow : Window
+    public partial class TaskAdderWindow : Window, INotifyPropertyChanged
     {
-        public TaskAdderWindow()
+        public event PropertyChangedEventHandler PropertyChanged;
+        private MainWindow MainWindow { get; set; }
+        public TaskAdderWindow(MainWindow mainWindow)
         {
+            MainWindow = mainWindow;
             InitializeComponent();            
         }
 
@@ -35,13 +39,20 @@ namespace ToDoApp12329.Windows
                 TaskDate = this.TaskDataPicker.SelectedDate
                 
             });
-
+            MainWindow.UpdateTasksList();
             this.Close();
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
         {
+            MainWindow.UpdateTasksList();
             this.Close();
         }
+
+        private void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }
