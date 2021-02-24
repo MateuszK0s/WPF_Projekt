@@ -48,6 +48,11 @@ namespace ToDoApp12329
             set { _allTasksSum = value; this.RaisePropertyChanged("AllTasksSum"); }
         }
 
+        private List<TeamMember> _members;
+        public List<TeamMember> Members
+        {
+            get { return _members; }
+        }
 
         public MainWindow()
         {
@@ -95,7 +100,6 @@ namespace ToDoApp12329
             TasksSum = Tasks.Count;
             Tasks = taskService.GetAllItems();
             AllTasksSum = Tasks.Count;
-
         }
     }
 }

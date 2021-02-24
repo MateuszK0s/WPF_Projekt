@@ -11,6 +11,7 @@ namespace ToDoApp12329.EntityFramework
     public class ToDoAppDbContext : DbContext
     {
         public DbSet<TaskItem> Tasks { get; set; } 
+        public DbSet<TeamMember> Members { get; set; }
 
         public ToDoAppDbContext() : base("ToDoAppDbContext")
         {
