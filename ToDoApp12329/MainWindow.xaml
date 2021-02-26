@@ -53,14 +53,15 @@
 
             <Image x:Name="userIco" Grid.Row="1" Grid.Column="1" Source="pack://application:,,,/resources/icons/userIco.png" 
                    Margin="0,0,0,10"/>
-            <ListBox x:Name="usernameLabel" ItemsSource="{Binding Members}" Grid.Row="1" Grid.Column="2">
-                <ListBox.ItemTemplate>
+            
+            <ComboBox x:Name="usernameLabel" Background="white" ItemsSource="{Binding Members}" Grid.Row="1" 
+                      Grid.Column="2" BorderBrush="{x:Null}" IsEditable="False" > 
+                <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text=""/>
+                        <TextBlock Text="{Binding MemberFullName}"/>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-                
-            </ListBox>
+                </ComboBox.ItemTemplate>                
+            </ComboBox>
             
             
             <Image x:Name="userico" Grid.Row="1" Grid.Column="3" Width="20"
@@ -78,7 +79,7 @@
             <Image x:Name="Ico3" Grid.Row="3" Grid.Column="1" Margin="3"
                Source="pack://application:,,,/resources/icons/usersIco.png"/>
             <Label Content="Users" Grid.Row="3" Grid.Column="2"/>
-            <Label Content="2" Grid.Row="3" Grid.Column="3" Opacity="0.6"/>
+            <Label Content="{Binding MembersCount}" Grid.Row="3" Grid.Column="3" Opacity="0.6"/>
 
             <Image x:Name="Ico4" Grid.Row="4" Grid.Column="1" Margin="3" 
                Source="pack://application:,,,/resources/icons/tasksIco.png"/>
@@ -114,7 +115,7 @@
             <Image x:Name="topBG" Source="pack://application:,,,/resources/background/topBG.png" 
                Grid.Row="0" Grid.RowSpan="3" Stretch="UniformToFill" MaxHeight="128"/>
 
-            <Label Content="My day" Grid.Row="1" FontSize="46"
+            <Label x:Name="mainLabel" Content = "My day" Grid.Row="1" FontSize="46"
                Margin="10,0" FontFamily="Segoe UI" Background="#00000000" Foreground="White"/>
 
             <Label x:Name="myDayDate" Content="DayOfWeek, Month Day" Grid.Row="2" 

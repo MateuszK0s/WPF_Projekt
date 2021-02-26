@@ -46,6 +46,15 @@ namespace ToDoApp12329.Views
             set { _allTasksSum = value; this.RaisePropertyChanged("Tasks"); }
         }
 
+        private List<TeamMember> _members;
+        public List<TeamMember> Members
+        {
+            get { return _members; }
+            set { _members = value; this.RaisePropertyChanged("AllTasksSum"); }
+        }
+
+        public int MembersCount;
+
         public MyDayTasksView()
         {
             DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
@@ -54,6 +63,10 @@ namespace ToDoApp12329.Views
             DateTime today = DateTime.Today;
             Tasks = taskService.GetByDates(today);
             TasksSum = Tasks.Count;
+
+            TeamMemberService memberService = new TeamMemberService(new ToDoAppDbContextFactory());
+            Members = memberService.GetAllMembers();
+            MembersCount = Members.Count;
 
             InitializeComponent();
         }

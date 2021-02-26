@@ -27,6 +27,13 @@ namespace ToDoApp12329
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string _mainLabel;
+        public string MainLabel
+        {
+            get { return _mainLabel; }
+            set { _mainLabel = value; this.RaisePropertyChanged("TasksSum"); }
+        }
+
         private List<TaskItem> _tasks;
         public List<TaskItem> Tasks
         {
@@ -52,13 +59,20 @@ namespace ToDoApp12329
         public List<TeamMember> Members
         {
             get { return _members; }
+            set { _members = value; this.RaisePropertyChanged("AllTasksSum"); }
         }
+
+        public int MembersCount;
 
         public MainWindow()
         {
             UpdateTasksList();
             DataContext = new MyDayTasksView();
-            Console.WriteLine(TasksSum);
+
+            TeamMemberService memberService = new TeamMemberService(new ToDoAppDbContextFactory());
+            Members = memberService.GetAllMembers();
+            MembersCount = Members.Count;
+
             InitializeComponent();
             MyDateSet();
         }
@@ -72,7 +86,7 @@ namespace ToDoApp12329
         }
 
         private void TaskAdderButton_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             TaskAdderWindow AddTaskWindow = new TaskAdderWindow(this);
             AddTaskWindow.ShowDialog();
         }
@@ -84,12 +98,18 @@ namespace ToDoApp12329
 
         private void TasksButton_Click(object sender, RoutedEventArgs e)
         {
+            MainLabel = "Tasks";
             DataContext = new TaskListView();
+            mainLabel.Content = "Tasks";
+
         }
 
         private void MyDayButton_Click(object sender, RoutedEventArgs e)
         {
+            MainLabel = "My Day";
             DataContext = new MyDayTasksView();
+            mainLabel.Content = "My Day";
+
         }
 
         public void UpdateTasksList()
@@ -100,6 +120,9 @@ namespace ToDoApp12329
             TasksSum = Tasks.Count;
             Tasks = taskService.GetAllItems();
             AllTasksSum = Tasks.Count;
+            TeamMemberService memberService = new TeamMemberService(new ToDoAppDbContextFactory());
+            Members = memberService.GetAllMembers();
+            MembersCount = Members.Count;
         }
     }
 }
