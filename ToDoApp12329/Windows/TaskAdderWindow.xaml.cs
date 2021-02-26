@@ -45,6 +45,8 @@ namespace ToDoApp12329.Windows
 
             MainWindow.UpdateTasksList();
             this.Close();
+            MainWindow.UpdateTasksList();
+
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)

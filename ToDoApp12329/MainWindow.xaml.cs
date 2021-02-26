@@ -24,15 +24,21 @@ namespace ToDoApp12329
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;        
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Reprezentacja wlasciwiosci MainLabel
+        /// </summary>
         public string _mainLabel;
         public string MainLabel
         {
             get { return _mainLabel; }
-            set { _mainLabel = value; this.RaisePropertyChanged("TasksSum"); }
+            set { _mainLabel = value; this.RaisePropertyChanged("MainLabel"); }
         }
 
+        /// <summary>
+        /// Reprezentacja zadan
+        /// </summary>
         private List<TaskItem> _tasks;
         public List<TaskItem> Tasks
         {
@@ -40,6 +46,9 @@ namespace ToDoApp12329
             set { _tasks = value; this.RaisePropertyChanged("Tasks"); }
         }
 
+        /// <summary>
+        /// Reprezentacja sumy zadan z obecnego dnia
+        /// </summary>
         private int _tasksSum;
         public int TasksSum
         {
@@ -47,6 +56,9 @@ namespace ToDoApp12329
             set { _tasksSum = Tasks.Count; this.RaisePropertyChanged("TasksSum"); }
         }
 
+        /// <summary>
+        /// Reprezentacja sumy ze wszystkich dni
+        /// </summary>
         private int _allTasksSum;
         public int AllTasksSum
         {
@@ -54,6 +66,9 @@ namespace ToDoApp12329
             set { _allTasksSum = value; this.RaisePropertyChanged("AllTasksSum"); }
         }
 
+        /// <summary>
+        /// Reprezentacja czlonkow
+        /// </summary>
         private List<TeamMember> _members;
         public List<TeamMember> Members
         {
@@ -61,6 +76,9 @@ namespace ToDoApp12329
             set { _members = value; this.RaisePropertyChanged("Members"); }
         }
 
+        /// <summary>
+        /// Reprezentacja liczby czlonkow
+        /// </summary>
         private int _membersCount;
         public int MembersCount
         {
@@ -72,7 +90,7 @@ namespace ToDoApp12329
         {
             UpdateTasksList();
             DataContext = new MyDayTasksView();
-
+            UpdateTasksList();
             InitializeComponent();
             MyDateSet();
         }
@@ -91,7 +109,7 @@ namespace ToDoApp12329
             AddTaskWindow.ShowDialog();
         }
 
-        private void RaisePropertyChanged(string propertyName)
+        public void RaisePropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -112,6 +130,9 @@ namespace ToDoApp12329
 
         }
 
+        /// <summary>
+        /// Aktualizacja listy zadan
+        /// </summary>
         public void UpdateTasksList()
         {
             DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());

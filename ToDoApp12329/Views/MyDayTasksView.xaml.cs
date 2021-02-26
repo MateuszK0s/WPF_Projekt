@@ -36,14 +36,14 @@ namespace ToDoApp12329.Views
         public int TasksSum
         {
             get { return _tasksSum; }
-            set { _tasksSum = value; this.RaisePropertyChanged("Tasks"); }
+            set { _tasksSum = value; this.RaisePropertyChanged("TasksSum"); }
         }
 
         private int _allTasksSum;
         public int AllTasksSum
         {
             get { return _allTasksSum; }
-            set { _allTasksSum = value; this.RaisePropertyChanged("Tasks"); }
+            set { _allTasksSum = value; this.RaisePropertyChanged("AllTasksSum"); }
         }
 
         private List<TeamMember> _members;
@@ -76,7 +76,7 @@ namespace ToDoApp12329.Views
             InitializeComponent();
         }
 
-        private void RaisePropertyChanged(string propertyName)
+        public void RaisePropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

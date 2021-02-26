@@ -76,7 +76,7 @@ namespace ToDoApp12329.Views
             InitializeComponent();
         }
 
-        private void RaisePropertyChanged(string propertyName)
+        public void RaisePropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
