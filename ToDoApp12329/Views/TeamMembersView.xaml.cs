@@ -20,9 +20,9 @@ using ToDoApp12329.EntityFramework;
 namespace ToDoApp12329.Views
 {
     /// <summary>
-    /// Interaction logic for TaskListView.xaml
+    /// Interaction logic for TeamMembersView.xaml
     /// </summary>
-    public partial class TaskListView : UserControl, INotifyPropertyChanged
+    public partial class TeamMembersView : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public List<TaskItem> _tasks;
@@ -50,7 +50,7 @@ namespace ToDoApp12329.Views
         public List<TeamMember> Members
         {
             get { return _members; }
-            set { _members = value; this.RaisePropertyChanged("Members"); }
+            set { _members = value; this.RaisePropertyChanged("AllTasksSum"); }
         }
 
         private int _membersCount;
@@ -60,7 +60,7 @@ namespace ToDoApp12329.Views
             set { _membersCount = value; this.RaisePropertyChanged("MembersCount"); }
         }
 
-        public TaskListView()
+        public TeamMembersView()
         {
             DataTaskService taskService = new DataTaskService(new ToDoAppDbContextFactory());
             DateTime today = DateTime.Today;

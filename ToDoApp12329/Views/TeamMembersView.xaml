@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="ToDoApp12329.Views.TeamMembersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToDoApp12329.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="261" d:DesignWidth="521">
+    <Grid x:Name="TeamMembersContainer">
+        <DataGrid IsReadOnly="True" ItemsSource="{Binding Members}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Name" Binding="{Binding MemberName}"/>
+                <DataGridTextColumn Width="*" Header="Surname" Binding="{Binding MemberSurname}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

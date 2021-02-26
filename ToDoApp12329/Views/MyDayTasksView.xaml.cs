@@ -50,10 +50,15 @@ namespace ToDoApp12329.Views
         public List<TeamMember> Members
         {
             get { return _members; }
-            set { _members = value; this.RaisePropertyChanged("AllTasksSum"); }
+            set { _members = value; this.RaisePropertyChanged("Members"); }
         }
 
-        public int MembersCount;
+        private int _membersCount;
+        public int MembersCount
+        {
+            get { return _tasksSum; }
+            set { _membersCount = value; this.RaisePropertyChanged("MembersCount"); }
+        }
 
         public MyDayTasksView()
         {

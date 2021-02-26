@@ -12,6 +12,7 @@ using ToDoApp12329.Domain.Models;
 using ToDoApp12329.Domain.Services;
 using ToDoApp12329.EntityFramework;
 using ToDoApp12329.EntityFramework.Services;
+using ToDoApp12329.Views;
 
 namespace ToDoApp12329.Windows
 {
@@ -39,6 +40,9 @@ namespace ToDoApp12329.Windows
                 TaskDate = this.TaskDataPicker.SelectedDate
                 
             });
+
+            MainWindow.DataContext = new TaskListView();
+
             MainWindow.UpdateTasksList();
             this.Close();
         }

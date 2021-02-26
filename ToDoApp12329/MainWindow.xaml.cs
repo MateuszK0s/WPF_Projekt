@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -25,7 +24,7 @@ namespace ToDoApp12329
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;        
 
         public string _mainLabel;
         public string MainLabel
@@ -59,10 +58,15 @@ namespace ToDoApp12329
         public List<TeamMember> Members
         {
             get { return _members; }
-            set { _members = value; this.RaisePropertyChanged("AllTasksSum"); }
+            set { _members = value; this.RaisePropertyChanged("Members"); }
         }
 
-        public int MembersCount;
+        private int _membersCount;
+        public int MembersCount
+        {
+            get { return _tasksSum; }
+            set { _membersCount = value; this.RaisePropertyChanged("MembersCount"); }
+        }
 
         public MainWindow()
         {
@@ -123,6 +127,13 @@ namespace ToDoApp12329
             TeamMemberService memberService = new TeamMemberService(new ToDoAppDbContextFactory());
             Members = memberService.GetAllMembers();
             MembersCount = Members.Count;
+        }
+
+        private void MembersButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainLabel = "Team members";
+            DataContext = new TeamMembersView();
+            mainLabel.Content = "Team members";
         }
     }
 }

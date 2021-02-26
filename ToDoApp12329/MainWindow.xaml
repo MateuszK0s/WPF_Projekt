@@ -17,6 +17,9 @@
         <DataTemplate x:Name="MyDayViewTemplate" DataType="{x:Type viewmodels:MyDayTasksViewModel}">
             <views:MyDayTasksView DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="MembersViewTemplate" DataType="{x:Type viewmodels:TeamMembersViewModel}">
+            <views:TeamMembersView DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid x:Name="MainGrid">
@@ -70,28 +73,37 @@
             <Border Height="1" Grid.Row="1" Background="Black" Opacity="0.1" Margin="0,39,10,0" 
                 Grid.ColumnSpan="3" Grid.Column="1"/>
 
+            
             <Image x:Name="Ico2" Grid.Row="2" Grid.Column="1" Margin="3" 
                Source="pack://application:,,,/resources/icons/mydayIco.png"/>
             <Button x:Name="MyDayButton" Background="white" HorizontalContentAlignment="Left"
                     BorderBrush="white" Content="My Day" Grid.Row="2" Grid.Column="2" Click="MyDayButton_Click"/>
             <Label Content="{Binding TasksSum}" Grid.Row="2" Grid.Column="3" Opacity="0.6"/>
 
+            
             <Image x:Name="Ico3" Grid.Row="3" Grid.Column="1" Margin="3"
                Source="pack://application:,,,/resources/icons/usersIco.png"/>
-            <Label Content="Users" Grid.Row="3" Grid.Column="2"/>
+
+            <Button x:Name="MembersButton" Content="Team" Grid.Row="3" Grid.Column="2" Background="white" 
+                    HorizontalContentAlignment="Left" BorderBrush="white" Click="MembersButton_Click"/>
+            
             <Label Content="{Binding MembersCount}" Grid.Row="3" Grid.Column="3" Opacity="0.6"/>
 
+            
             <Image x:Name="Ico4" Grid.Row="4" Grid.Column="1" Margin="3" 
                Source="pack://application:,,,/resources/icons/tasksIco.png"/>
             <Button x:Name="TasksButton" Background="white" Content="Tasks" HorizontalContentAlignment="Left"
                     BorderBrush="white" Grid.Row="4" Grid.Column="2" Click="TasksButton_Click"/>
+            
             <Label Content="{Binding AllTasksSum}" Grid.Row="4" Grid.Column="3" Opacity="0.6"/>
 
+            
             <Border Grid.Column="4" Grid.RowSpan="11" Background="Black" Width="1" Opacity="0.1" 
-                Margin="10,0,0,0"/>
+                Margin="10,0,0,0"/>            
             <Border Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Background="Black" Height="1" 
                 Opacity="0.1" Margin="0,17,10,10"/>
 
+            
             <Image x:Name="Ico6" Grid.Row="7" Grid.Column="1" Margin="3"
                Source="pack://application:,,,/resources/icons/plusIco.png"/>
             

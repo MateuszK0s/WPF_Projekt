@@ -70,6 +70,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\CreateTaskCommand.cs" />
+    <Compile Include="ViewModels\TeamMembersViewModel.cs" />
     <Compile Include="ViewModels\MyDayTasksViewModel.cs" />
     <Compile Include="ViewModels\TaskAdderViewModel.cs" />
     <Compile Include="ViewModels\TaskListViewModel.cs" />
@@ -82,6 +83,9 @@
     </Compile>
     <Compile Include="Views\TaskListView.xaml.cs">
       <DependentUpon>TaskListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeamMembersView.xaml.cs">
+      <DependentUpon>TeamMembersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\TaskAdderWindow.xaml.cs">
       <DependentUpon>TaskAdderWindow.xaml</DependentUpon>
@@ -107,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TaskListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeamMembersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
