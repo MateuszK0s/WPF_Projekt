@@ -64,7 +64,7 @@ namespace ToDoApp12329
         private int _membersCount;
         public int MembersCount
         {
-            get { return _tasksSum; }
+            get { return _membersCount; }
             set { _membersCount = value; this.RaisePropertyChanged("MembersCount"); }
         }
 
@@ -72,10 +72,6 @@ namespace ToDoApp12329
         {
             UpdateTasksList();
             DataContext = new MyDayTasksView();
-
-            TeamMemberService memberService = new TeamMemberService(new ToDoAppDbContextFactory());
-            Members = memberService.GetAllMembers();
-            MembersCount = Members.Count;
 
             InitializeComponent();
             MyDateSet();
@@ -124,6 +120,7 @@ namespace ToDoApp12329
             TasksSum = Tasks.Count;
             Tasks = taskService.GetAllItems();
             AllTasksSum = Tasks.Count;
+
             TeamMemberService memberService = new TeamMemberService(new ToDoAppDbContextFactory());
             Members = memberService.GetAllMembers();
             MembersCount = Members.Count;

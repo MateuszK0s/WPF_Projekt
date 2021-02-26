@@ -56,7 +56,7 @@ namespace ToDoApp12329.Views
         private int _membersCount;
         public int MembersCount
         {
-            get { return _tasksSum; }
+            get { return _membersCount; }
             set { _membersCount = value; this.RaisePropertyChanged("MembersCount"); }
         }
 
